@@ -9,6 +9,7 @@ function App() {
         <Routes>
           {['/', '/:movieId', '/:movieId/:action'].map((path) => (
             <Route
+              key={path}
               path={path}
               element={(
                 <Home />
