@@ -1,0 +1,29 @@
+.Frame {
+  box-sizing: border-box;
+  display: flex;
+  position: relative;
+
+  & > * {
+    position: relative;
+  }
+
+  &[data-expand] {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &[data-direction="column"] {
+    flex-direction: column;
+  }
+
+  & > div:not([data-frame="auto"]) {
+    flex: none;
+  }
+
+  & > div[data-frame=auto] {
+    flex: auto;
+  }
+}

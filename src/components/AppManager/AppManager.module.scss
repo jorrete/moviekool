@@ -1,0 +1,39 @@
+/* stylelint-disable at-rule-no-unknown */
+:root {
+  --App-manager-backdrop-color: black;
+  --App-manager-animation-duration: 300ms;
+}
+
+@mixin full {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
+}
+
+.AppManager {
+  &, & > [data-slot] {
+    @include full;
+  }
+
+  & > [data-slot]:empty {
+    display: none;
+  }
+
+  &:not([data-ready]) {
+    visibility: hidden;
+  }
+}
+
+.AppWindow {
+  @include full;
+  background-color: red;
+  transition: opacity var(--App-manager-animation-duration) ease;
+  opacity: 0;
+
+  &[data-open] {
+    opacity: 1;
+  }
+}

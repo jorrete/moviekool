@@ -1,0 +1,30 @@
+:root {
+  --useInteraction-backdrop-color: black;
+}
+
+.useInteraction {
+  position: relative;
+
+  &::after {
+    background-color: var(--useInteraction-backdrop-color);
+    pointer-events: none;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+  &[data-interaction="normal"]::after {
+    opacity: 0;
+  }
+
+  &[data-interaction="hover"]::after {
+    opacity: 0.2;
+  }
+
+  &[data-interaction="active"]::after {
+    opacity: 0.4;
+  }
+}

@@ -1,0 +1,11 @@
+.Button {
+  box-sizing: border-box;
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+
+  &[data-disabled] {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}
