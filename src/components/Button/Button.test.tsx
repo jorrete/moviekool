@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import Button from '.';
-import userEvent from '@testing-library/user-event';
 
 function TestButton() {
   const [count, setCount] = useState(0);

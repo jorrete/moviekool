@@ -1,24 +1,20 @@
 import {
   useCallback,
-  useRef,
-  useState,
-  useEffect,
   useContext,
   createContext,
-  RefObject,
 } from 'react';
 import { ComponentProps, ComponentDefaults } from 'components';
 
 interface AppInteractionProps extends ComponentProps {
-  onClose: (result: unknown) => undefined,
+  onClose: (result?: unknown) => void,
 }
 
 const AppInteractionDefaults: AppInteractionProps = {
   ...ComponentDefaults,
-  onClose: () => undefined,
+  onClose: () => void 0,
 };
 
-const AppInteractionContext = createContext((value: unknown) => undefined);
+const AppInteractionContext = createContext(() => void 0);
 
 function AppInteraction(props: AppInteractionProps): JSX.Element {
   const {
@@ -29,18 +25,18 @@ function AppInteraction(props: AppInteractionProps): JSX.Element {
     ...props,
   };
 
-  const closeCallback = useCallback((value: unknown) => onClose(value), []);
+  const closeCallback = useCallback((value?: unknown) => onClose(value), []);
 
   return (
     <AppInteractionContext.Provider
-      value={closeCallback}
+      value={closeCallback as () => undefined}
     >
       {children}
     </AppInteractionContext.Provider>
   );
 }
 
-function useAppInteraction() {
+function useAppInteraction(): (value?: unknown) => void {
   return useContext(AppInteractionContext);
 }
 

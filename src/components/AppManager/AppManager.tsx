@@ -1,19 +1,16 @@
 import {
   RefObject,
   createContext,
-  useContext,
   useEffect,
   useMemo,
   useRef,
   useState,
 } from 'react';
-import { createPortal } from 'react-dom';
 import { ComponentProps, ComponentDefaults } from 'components';
 import styles from './AppManager.module.scss';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface AppManagerProps extends ComponentProps {
-  direction?: string,
-  expand?: boolean,
 }
 
 const AppManagerDefaults: AppManagerProps = {
@@ -39,8 +36,6 @@ function AppManager(props: AppManagerProps): JSX.Element {
     children,
     className,
     style,
-    direction,
-    expand,
     ...rest
   } = {
     ...AppManagerDefaults,

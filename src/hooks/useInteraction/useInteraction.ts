@@ -1,4 +1,4 @@
-import { useReducer, useEffect, useRef, useCallback } from 'react';
+import { useReducer, useRef, useCallback } from 'react';
 
 interface State {
   hover: boolean,
@@ -14,7 +14,6 @@ const ACTION_HOVER_ON = 'hoveron';
 const ACTION_HOVER_OFF = 'hoveroff';
 const ACTION_ACTIVE_ON = 'activeon';
 const ACTION_ACTIVE_OFF = 'activeoff';
-const ACTION_ELEMENT = 'element';
 
 function reducer(state: State, action: string) {
   switch (action) {

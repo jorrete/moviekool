@@ -1,14 +1,9 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { AppWindow } from 'components/AppManager';
 import Button from 'components/Button';
 import Detail from './Detail';
 import Card from 'components/Card';
-import { Link, useParams, useNavigate, useLocation } from 'react-router-dom';
-
-interface Params {
-  movieId?: null | string,
-  action?: null | string,
-}
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 
 interface URLState {
   timestamp?: number,

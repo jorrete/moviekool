@@ -1,4 +1,4 @@
-import { MutableRefObject, useReducer, useRef, useEffect, LegacyRef, ReactElement } from 'react';
+import {  ReactElement } from 'react';
 import { ComponentProps, ComponentDefaults } from 'components';
 import Frame from 'components/Frame';
 import styles from './Card.module.scss';

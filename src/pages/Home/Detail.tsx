@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { ComponentProps, ComponentDefaults } from 'components';
 import Button from 'components/Button';
 import Card from 'components/Card';

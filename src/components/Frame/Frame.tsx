@@ -1,4 +1,3 @@
-import { MutableRefObject, useReducer, useRef, useEffect, LegacyRef } from 'react';
 import { ComponentProps, ComponentDefaults } from 'components';
 import styles from './Frame.module.scss';
 

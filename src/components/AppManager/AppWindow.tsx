@@ -4,8 +4,6 @@ import {
   useState,
   useEffect,
   useContext,
-  createContext,
-  RefObject,
 } from 'react';
 import { createPortal } from 'react-dom';
 import { ComponentProps, ComponentDefaults } from 'components';
@@ -14,7 +12,7 @@ import AppInteraction from './AppInteraction';
 import styles from './AppManager.module.scss';
 
 interface AppWindowProps extends ComponentProps {
-  onClose?: (result: unknown) => void,
+  onClose?: (result?: unknown) => void,
   open?: boolean,
 }
 
@@ -27,7 +25,6 @@ function AppWindow(props: AppWindowProps): JSX.Element | null {
   const {
     children,
     className,
-    style,
     onClose,
     open: _open,
     ...rest
@@ -60,9 +57,7 @@ function AppWindow(props: AppWindowProps): JSX.Element | null {
       value: null,
     });
   }, []);
-  const onCloseCallback = useCallback((value) => {
-    setOpen({ state: false, value, });
-  }, []);
+  const onCloseCallback = useCallback((value) => setOpen({ state: false, value, }), []);
 
   if (windowRef?.current === null) {
     return null;
@@ -73,6 +68,7 @@ function AppWindow(props: AppWindowProps): JSX.Element | null {
       ref={ref}
       className={`${styles.AppWindow} ${className}`}
       data-open={open.state ? '' : null}
+      {...rest}
     >
       <AppInteraction
         onClose={onCloseCallback}

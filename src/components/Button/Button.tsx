@@ -1,4 +1,4 @@
-import { MutableRefObject, useReducer, useRef, useEffect, LegacyRef, MouseEventHandler } from 'react';
+import {  MouseEventHandler } from 'react';
 import { ComponentProps, ComponentDefaults } from 'components';
 import useElementInteraction from 'hooks/useInteraction';
 import stylesInteraction from 'hooks/useInteraction/useInteraction.module.scss';
