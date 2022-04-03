@@ -1,7 +1,9 @@
 import { ComponentProps, ComponentDefaults } from 'components';
-import { ReactComponent as cross } from 'icons/cross.svg';
 import { FunctionComponent, SVGProps } from 'react';
 import styles from './Icon.module.scss';
+
+import { ReactComponent as cross } from 'icons/cross.svg';
+import { ReactComponent as play_arrow } from 'icons/play_arrow.svg';
 
 interface IconsInteface {
   [key: string]: FunctionComponent<SVGProps<SVGSVGElement>>,
@@ -9,6 +11,7 @@ interface IconsInteface {
 
 const icons: IconsInteface = {
   cross,
+  play_arrow,
 };
 
 interface IconProps extends Omit<ComponentProps, 'children'> {

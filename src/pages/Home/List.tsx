@@ -2,10 +2,12 @@ import {  useEffect, useRef, useReducer } from 'react';
 import { ComponentProps, ComponentDefaults } from 'components';
 import useTMDB from 'hooks/useTMDB';
 import Button from 'components/Button';
+import Icon from 'components/Icon';
 import Card from 'components/Card';
 import Frame from 'components/Frame';
 import styles from './Home.module.scss';
 import { useNavigate } from 'react-router-dom';
+import title from 'images/MovieKOOL.svg';
 import {
   reducer,
   DEFAULT_STATE,
@@ -61,22 +63,37 @@ function List(props: ListProps): JSX.Element {
       data-ui="List"
       style={style}
       header={(
-        <div>List</div>
+        <img
+          src={title}
+          alt="title"
+        />
       )}
       footer={(
         <Frame>
-          <Button
+          <div
             data-frame="auto"
-            onClick={() => setState(focus(state.focused - 1))}
           >
-            <span>left</span>
-          </Button>
-          <Button
+            <Button
+              onClick={() => setState(focus(state.focused - 1))}
+              data-prev
+            >
+              <Icon
+                id="play_arrow"
+              />
+            </Button>
+          </div>
+          <div
             data-frame="auto"
-            onClick={() => setState(focus(state.focused + 1))}
           >
-            <span>right</span>
-          </Button>
+            <Button
+              onClick={() => setState(focus(state.focused + 1))}
+              data-next
+            >
+              <Icon
+                id="play_arrow"
+              />
+            </Button>
+          </div>
         </Frame>
       )}
       {...rest}
@@ -96,26 +113,24 @@ function List(props: ListProps): JSX.Element {
             <div
               style={{
                 backgroundImage: `url(${movie.poster_path})`,
-                backgroundPosition: 'center',
               }}
-            />
-            <div>
-              <span>
-                {movie.original_title}
-              </span>
-              <span>
+            >
+              <span
+                data-vote
+              >
                 {movie.vote_average}
               </span>
-              {index === state.focused &&(
-                <span>
-                  <Button
-                    onClick={() => navigate(`/${movie.id}/detail`)}
-                  >
-                    watch
-                  </Button>
-                </span>
-
-              )}
+              <Button
+                onClick={() => navigate(`/${movie.id}/detail`)}
+                data-watch
+              >
+                watch
+              </Button>
+              <span
+                data-title
+              >
+                {movie.original_title}
+              </span>
             </div>
           </li>
         ))}

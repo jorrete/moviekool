@@ -3,6 +3,7 @@
   display: inline-block;
   cursor: pointer;
   user-select: none;
+  overflow: hidden;
 
   &[data-disabled] {
     pointer-events: none;
