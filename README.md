@@ -2,6 +2,14 @@
 
 Dummy streaming platform.
 
+The project is developed with:
+
+- typescript
+- scss
+- react
+- [vite](https://vitejs.dev/)
+
+
 ## Development
 
 ```bash
