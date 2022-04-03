@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-const TMDB_API_TOKEN = 'd3d74742b1c44b96de48da9da2ea3c8b';
+const TMDB_API_TOKEN = import.meta.env.VITE_TMDB_API_TOKEN;
 
 export interface MovieListItemInterface {
   id: number,
