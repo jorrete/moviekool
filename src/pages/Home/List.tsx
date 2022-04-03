@@ -54,7 +54,16 @@ function List(props: ListProps): JSX.Element {
             <Button
               onClick={() => navigate(`/${movie.id}/detail`)}
             >
-              {`${movie.original_title} (${movie.id})`}
+              <span>
+                {movie.original_title}
+              </span>
+              <span>
+                {movie.vote_average}
+              </span>
+              <img
+                src={movie.poster_path}
+                alt={movie.original_title}
+              />
             </Button>
           </li>
         ))}

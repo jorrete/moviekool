@@ -6,6 +6,7 @@ export interface MovieListItemInterface {
   original_title: string,
   vote_average: number,
   poster_path: string,
+  overview: string,
 }
 
 export interface MovieListInterface {
@@ -15,9 +16,8 @@ export interface MovieListInterface {
   total_results: number,
 }
 
-export interface MovieDetailInterface {
-  id: number,
-  original_title: string,
+export interface MovieDetailInterface extends MovieListItemInterface {
+  spoken_languages: unknown,
 }
 
 interface TMDBInterface {
