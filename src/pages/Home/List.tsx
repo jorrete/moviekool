@@ -1,15 +1,12 @@
 import { ComponentProps, ComponentDefaults } from 'components';
+import useTMDB from 'hooks/useTMDB';
 import Button from 'components/Button';
+import Card from 'components/Card';
 import styles from './Home.module.scss';
+import { useNavigate } from 'react-router-dom';
 
-export interface MovieInterface {
-  id: number,
-  name: string,
-}
-
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface ListProps extends Omit<ComponentProps, 'children'> {
-  movies: MovieInterface[],
-  onSelection: () => void,
 }
 
 const ListDefaults: Omit<ComponentProps, 'movie'> = {
@@ -20,33 +17,40 @@ function List(props: ListProps): JSX.Element {
   const {
     className,
     style,
-    movies,
-    onSelection,
     ...rest
   } = {
     ...ListDefaults,
     ...props,
   };
+  const { getMovieList } = useTMDB();
+  const movies = getMovieList();
+  const navigate = useNavigate();
 
   return (
-    <ul
-      className={`${styles.List} ${className}`}
-      data-ui="List"
-      style={style}
-      {...rest}
+    <Card
+      header={(
+        <div>home</div>
+      )}
     >
-      {movies.map((movie) => (
-        <li
-          key={movie.id}
-        >
-          <Button
-            onClick={onSelection}
+      <ul
+        className={`${styles.List} ${className}`}
+        data-ui="List"
+        style={style}
+        {...rest}
+      >
+        {movies.map((movie) => (
+          <li
+            key={movie.id}
           >
-            {`detail ${movie.name} (${movie.id})`}
-          </Button>
-        </li>
-      ))}
-    </ul>
+            <Button
+              onClick={() => navigate(`/${movie.id}/detail`)}
+            >
+              {`detail ${movie.name} (${movie.id})`}
+            </Button>
+          </li>
+        ))}
+      </ul>
+    </Card>
   );
 }
 
