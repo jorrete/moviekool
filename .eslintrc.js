@@ -1,4 +1,9 @@
 module.exports = {
+  'settings': {
+    'react': {
+      'version': 'detect',
+    },
+  },
   'extends': [
     'jorrodev/typescript',
     'plugin:react/recommended',
