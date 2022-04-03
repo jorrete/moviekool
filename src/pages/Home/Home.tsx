@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { AppWindow } from 'components/AppManager';
-import Button from 'components/Button';
 import Detail from './Detail';
+import List from './List';
 import Card from 'components/Card';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 
@@ -41,19 +41,10 @@ function Home() {
           <div>home</div>
         )}
       >
-        <ul>
-          {movies.map((movie) => (
-            <li
-              key={movie.id}
-            >
-              <Button
-                onClick={() => navigate(`/${movie.id}/detail`, { state: { timestamp: timestamp.current } })}
-              >
-                {`detail ${movie.name} (${movie.id})`}
-              </Button>
-            </li>
-          ))}
-        </ul>
+        <List
+          movies={movies}
+          onSelection={() => navigate(`/${movie.id}/detail`, { state: { timestamp: timestamp.current } })}
+        />
       </Card>
       {showDetail && (
         <AppWindow
