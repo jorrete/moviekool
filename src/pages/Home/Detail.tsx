@@ -51,10 +51,11 @@ function Detail(props: DetailProps): JSX.Element {
           <div
             data-frame="auto"
           >
-            Detail
+            {item?.original_title}
           </div>
           <div>
             <Button
+              data-action="close"
               onClick={() => closeInteraction()}
             >
               <Icon
@@ -68,8 +69,17 @@ function Detail(props: DetailProps): JSX.Element {
     >
       {item && (
         <>
+          <div
+            style={{
+              backgroundImage: `url(${item.poster_path})`,
+            }}
+          />
           <div>
-            {item.original_title}
+            <div
+              data-overview
+            >
+              {item.overview}
+            </div>
           </div>
         </>
       )}

@@ -30,7 +30,6 @@
 
 .AppWindow {
   @include full;
-  background-color: red;
   transition: opacity var(--App-manager-animation-duration) ease;
   opacity: 0;
 

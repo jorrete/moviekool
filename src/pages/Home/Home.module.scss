@@ -1,37 +1,38 @@
+/* stylelint-disable at-rule-no-unknown */
 :root {
   --List-item-padding: 100px;
   --List-item-width: 300px;
   --List-animation-duration: 300ms;
+  --List-border-radius: 3px;
 }
 
-.Detail {
-  box-sizing: border-box;
+@mixin round-button {
+  background-color: #ffffff96;
+  padding: 1rem;
+  border-radius: 50%;
 }
 
 .List {
   --List-offset: 0px;
   --List-delta-x: 0px;
   --List-padding: 5px;
-  --List-border-radius: 3px;
-
-  > [data-slot="header"] {
-    text-align: center;
-    img {
-      height: 200px;
-    }
-  }
 
   > [data-slot="footer"] {
     padding: 2rem;
 
     [data-ui="Button"] {
-      background-color: #ffffff96;
-      padding: 1rem;
-      border-radius: 50%;
+      @include round-button;
     }
 
-    [data-next] {
+    [data-action="next"] {
       transform: scaleX(-1);
+    }
+  }
+
+  > [data-slot="header"] {
+    text-align: center;
+    img {
+      height: 200px;
     }
   }
 
@@ -131,5 +132,54 @@
 
   [data-slot="footer"] {
     text-align: center;
+  }
+}
+
+.Detail {
+  box-sizing: border-box;
+  background-color: #000000f2;
+  color: white;
+
+  > [data-slot] {
+    padding: 2rem;
+  }
+
+  > [data-slot="content"] {
+    display: flex;
+
+    > :first-child {
+      border-radius: var(--List-border-radius);
+      overflow: hidden;
+      aspect-ratio: 2 / 3;
+      background-size: cover;
+      background-position: center;
+      min-width: 500px;
+    }
+
+    > :nth-child(2) {
+      flex: auto;
+      padding: 0 2rem;
+    }
+
+    > :nth-child(3) {
+      border-radius: var(--List-border-radius);
+      padding: 2rem;
+      background-color: #FFFFFFF2;
+      color: black;
+    }
+  }
+
+  > [data-slot="header"] {
+    [data-ui="Frame"] {
+      > :first-child {
+        font-size: 2rem;
+        font-weight: bolder;
+      }
+      align-items: center;
+
+      [data-ui="Button"] {
+        @include round-button;
+      }
+    }
   }
 }

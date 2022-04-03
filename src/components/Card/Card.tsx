@@ -44,6 +44,7 @@ function Card(props: CardProps): JSX.Element {
         )}
       </>
       <div
+        data-slot="content"
         data-frame="auto"
       >
         {children}

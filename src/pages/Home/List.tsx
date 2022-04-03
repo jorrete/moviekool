@@ -75,7 +75,7 @@ function List(props: ListProps): JSX.Element {
           >
             <Button
               onClick={() => setState(focus(state.focused - 1))}
-              data-prev
+              data-action="prev"
             >
               <Icon
                 id="play_arrow"
@@ -87,7 +87,7 @@ function List(props: ListProps): JSX.Element {
           >
             <Button
               onClick={() => setState(focus(state.focused + 1))}
-              data-next
+              data-action="next"
             >
               <Icon
                 id="play_arrow"
