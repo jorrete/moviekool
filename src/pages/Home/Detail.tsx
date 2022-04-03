@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppWindow } from 'components/AppManager';
 import useTMDB from 'hooks/useTMDB';
@@ -6,6 +7,7 @@ import Button from 'components/Button';
 import Card from 'components/Card';
 import { useAppInteraction } from 'components/AppManager';
 import styles from './Home.module.scss';
+import { MovieDetailInterface } from 'hooks/useTMDB/useTMDB';
 
 interface DetailProps extends Omit<ComponentProps, 'children'> {
   movieId: string,
@@ -27,25 +29,42 @@ function Detail(props: DetailProps): JSX.Element {
   };
   const closeInteraction = useAppInteraction();
   const { getMovieDetail } = useTMDB();
-  const movie = getMovieDetail(parseInt(movieId));
+  const [item, setItem] = useState(null as (null | MovieDetailInterface));
+
+  useEffect(() => {
+    (async () => {
+      const movie = await getMovieDetail(parseInt(movieId));
+
+      setItem(movie as MovieDetailInterface);
+    })();
+  }, []);
 
   return (
     <Card
       className={`${styles.Detail} ${className}`}
       data-ui="Detail"
       style={style}
+      header={(
+        <>
+          <div>Detail</div>
+          <div>
+            <Button
+              onClick={() => closeInteraction()}
+            >
+              X
+            </Button>
+          </div>
+        </>
+      )}
       {...rest}
     >
-      <div>
-        {movie.id}
-      </div>
-      <div>
-        <Button
-          onClick={() => closeInteraction()}
-        >
-          close window!!!
-        </Button>
-      </div>
+      {item && (
+        <>
+          <div>
+            {item.original_title}
+          </div>
+        </>
+      )}
     </Card>
   );
 }
