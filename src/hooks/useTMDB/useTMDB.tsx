@@ -17,7 +17,7 @@ export interface MovieListInterface {
 }
 
 export interface MovieDetailInterface extends MovieListItemInterface {
-  spoken_languages: unknown,
+  spoken_languages?: unknown,
 }
 
 interface TMDBInterface {
@@ -33,13 +33,17 @@ function buildImagePath(image: string): string {
   return `https://image.tmdb.org/t/p/w500${image}`;
 }
 
+function prepareImage(movie: MovieListItemInterface): MovieListItemInterface {
+  return {
+    ...movie,
+    poster_path: buildImagePath(movie.poster_path),
+  };
+}
+
 function prepareImages(movieList: MovieListInterface): MovieListInterface {
   return {
     ...movieList,
-    results: movieList.results.map((movie) => ({
-      ...movie,
-      poster_path: buildImagePath(movie.poster_path),
-    })),
+    results: movieList.results.map(prepareImage),
   };
 }
 
@@ -51,7 +55,7 @@ function APICall(path: string) {
 function useTMDB(): TMDBInterface {
   return useMemo(() => ({
     getMovieList: (): Promise<MovieListInterface> => APICall('/movie/popular').then(prepareImages),
-    getMovieDetail: (id): Promise<MovieDetailInterface>=> APICall(`/movie/${id}`),
+    getMovieDetail: (id): Promise<MovieDetailInterface>=> APICall(`/movie/${id}`).then(prepareImage),
   }), []);
 }
 
