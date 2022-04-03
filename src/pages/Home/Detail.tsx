@@ -8,6 +8,7 @@ import Card from 'components/Card';
 import { useAppInteraction } from 'components/AppManager';
 import styles from './Home.module.scss';
 import { MovieDetailInterface } from 'hooks/useTMDB/useTMDB';
+import Frame from 'components/Frame';
 
 interface DetailProps extends Omit<ComponentProps, 'children'> {
   movieId: string,
@@ -45,8 +46,12 @@ function Detail(props: DetailProps): JSX.Element {
       data-ui="Detail"
       style={style}
       header={(
-        <>
-          <div>Detail</div>
+        <Frame>
+          <div
+            data-frame="auto"
+          >
+            Detail
+          </div>
           <div>
             <Button
               onClick={() => closeInteraction()}
@@ -54,7 +59,7 @@ function Detail(props: DetailProps): JSX.Element {
               X
             </Button>
           </div>
-        </>
+        </Frame>
       )}
       {...rest}
     >

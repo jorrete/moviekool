@@ -36,11 +36,11 @@ function Card(props: CardProps): JSX.Element {
     >
       <>
         {header && (
-          <Frame
+          <div
             data-slot="header"
           >
             {header}
-          </Frame>
+          </div>
         )}
       </>
       <div
@@ -50,11 +50,11 @@ function Card(props: CardProps): JSX.Element {
       </div>
       <>
         {footer && (
-          <Frame
+          <div
             data-slot="footer"
           >
             {footer}
-          </Frame>
+          </div>
         )}
       </>
     </Frame>
