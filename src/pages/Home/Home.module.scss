@@ -1,7 +1,58 @@
+:root {
+  --List-item-padding: 100px;
+  --List-item-width: 300px;
+  --List-animation-duration: 300ms;
+}
+
 .Detail {
   box-sizing: border-box;
 }
 
 .List {
+  --List-offset: 0px;
+  --List-delta-x: 0px;
+
   box-sizing: border-box;
+
+  ul {
+    position: absolute;
+    top: 0;
+    left: var(--List-offset);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    transition: transform var(--List-animation-duration) ease;
+    transform: translateX(var(--List-delta-x));
+
+    li {
+      padding: 0 var(--List-item-padding);
+      display: inline-block;
+
+      [data-ui="Button"] {
+        display: flex;
+        flex-direction: column;
+
+        :first-child {
+          aspect-ratio: 2 / 3;
+          width: var(--List-item-width);
+          background-size: cover;
+        }
+      }
+      transition: transform var(--List-animation-duration) ease;
+      transform: scale(1);
+
+      &[data-focused] {
+        transform: scale(1.3);
+      }
+    }
+
+  }
+
+  [data-slot="footer"] {
+    text-align: center;
+  }
 }
