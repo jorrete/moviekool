@@ -3,13 +3,12 @@ import Detail from './Detail';
 import List from './List';
 
 function Home() {
-  const { movieId = null, action = null } = useParams() ;
-  const showDetail = movieId !== null && action === 'detail';
+  const { movieId = null } = useParams() ;
 
   return (
     <>
       <List />
-      {showDetail && (
+      {movieId !== null && (
         <Detail
           movieId={movieId}
         />

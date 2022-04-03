@@ -121,7 +121,7 @@ function List(props: ListProps): JSX.Element {
                 {movie.vote_average}
               </span>
               <Button
-                onClick={() => navigate(`/${movie.id}/detail`)}
+                onClick={() => navigate(`/${movie.id}`)}
                 data-watch
               >
                 watch

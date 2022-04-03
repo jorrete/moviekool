@@ -7,7 +7,7 @@ function App() {
     <AppManager>
       <BrowserRouter>
         <Routes>
-          {['/', '/:movieId', '/:movieId/:action'].map((path) => (
+          {['/', '/:movieId'].map((path) => (
             <Route
               key={path}
               path={path}

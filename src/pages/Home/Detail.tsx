@@ -91,17 +91,11 @@ function Detail(props: DetailProps): JSX.Element {
 // must be done because you cant define and consume
 // a context in the same component
 function DetailWrapper(props: DetailProps): JSX.Element {
-  const {
-    movieId,
-  } = {
-    ...DetailDefaults,
-    ...props,
-  };
   const navigate = useNavigate();
 
   return (
     <AppWindow
-      onClose={() => navigate(`/${movieId}`)}
+      onClose={() => navigate('/')}
     >
       <Detail
         {...props}
