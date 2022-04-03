@@ -9,6 +9,7 @@ import { useAppInteraction } from 'components/AppManager';
 import styles from './Home.module.scss';
 import { MovieDetailInterface } from 'hooks/useTMDB/useTMDB';
 import Frame from 'components/Frame';
+import Icon from 'components/Icon';
 
 interface DetailProps extends Omit<ComponentProps, 'children'> {
   movieId: string,
@@ -56,7 +57,9 @@ function Detail(props: DetailProps): JSX.Element {
             <Button
               onClick={() => closeInteraction()}
             >
-              X
+              <Icon
+                id="cross"
+              />
             </Button>
           </div>
         </Frame>

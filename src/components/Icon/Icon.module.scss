@@ -1,0 +1,25 @@
+:root {
+  --Icon-size: 2rem;
+}
+
+.Icon {
+  position: relative;
+  height: var(--Icon-size);
+  width: var(--Icon-size);
+  vertical-align: bottom;
+
+  &, & > svg {
+    display: inline-block;
+    box-sizing: border-box;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  & > svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+}
