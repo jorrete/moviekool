@@ -32,16 +32,15 @@
       padding: 0 var(--List-item-padding);
       display: inline-block;
 
-      [data-ui="Button"] {
-        display: flex;
-        flex-direction: column;
+      display: flex;
+      flex-direction: column;
 
-        :first-child {
-          aspect-ratio: 2 / 3;
-          width: var(--List-item-width);
-          background-size: cover;
-        }
+      > :first-child {
+        aspect-ratio: 2 / 3;
+        width: var(--List-item-width);
+        background-size: cover;
       }
+
       transition: transform var(--List-animation-duration) ease;
       transform: scale(1);
 

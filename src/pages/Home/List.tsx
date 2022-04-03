@@ -93,24 +93,30 @@ function List(props: ListProps): JSX.Element {
             data-focused={state.focused === index ?  '' : null}
             key={movie.id}
           >
-            <Button
-              onClick={() => navigate(`/${movie.id}/detail`)}
-            >
-              <div
-                style={{
-                  backgroundImage: `url(${movie.poster_path})`,
-                  backgroundPosition: 'center',
-                }}
-              />
-              <div>
+            <div
+              style={{
+                backgroundImage: `url(${movie.poster_path})`,
+                backgroundPosition: 'center',
+              }}
+            />
+            <div>
+              <span>
+                {movie.original_title}
+              </span>
+              <span>
+                {movie.vote_average}
+              </span>
+              {index === state.focused &&(
                 <span>
-                  {movie.original_title}
+                  <Button
+                    onClick={() => navigate(`/${movie.id}/detail`)}
+                  >
+                    watch
+                  </Button>
                 </span>
-                <span>
-                  {movie.vote_average}
-                </span>
-              </div>
-            </Button>
+
+              )}
+            </div>
           </li>
         ))}
       </ul>
